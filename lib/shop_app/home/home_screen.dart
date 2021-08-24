@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:last_try/shared/constants.dart';
 import 'package:last_try/shop_app/categories/categories_screen.dart';
 import 'package:last_try/shop_app/favourites/favourites_screen.dart';
@@ -9,6 +11,7 @@ import 'package:last_try/shop_app/search/search_screen.dart';
 import 'package:last_try/shop_app/settings/settings_screen.dart';
 import 'package:last_try/shop_app/shop_cubit/shop_cubit.dart';
 import 'package:last_try/shop_app/shop_cubit/shop_state.dart';
+import 'package:line_icons/line_icons.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -47,29 +50,47 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             body: navBarScreens[cubit.currentIndex],
-            bottomNavigationBar:cubit.homeModel!=null?BottomNavigationBar(
-              currentIndex: cubit.currentIndex,
-              onTap: (index){
-                cubit.changeNavBar(index);
-              },
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
+            bottomNavigationBar:cubit.homeModel!=null?
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 6,horizontal: 8),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  topLeft: Radius.circular(20),
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.apps),
-                  label: 'Categories',
+                child: GNav(
+                  textStyle: Theme.of(context).textTheme.bodyText2,
+                    curve: Curves.easeInOut,
+                    duration: Duration(milliseconds: 900),
+                    gap: 8,
+                    color: Colors.grey[800],
+                    activeColor: Colors.black87,
+                    iconSize: 24,
+                    tabBackgroundColor: Colors.black.withOpacity(0.1),
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                    onTabChange:(index){
+                        cubit.changeNavBar(index);
+                      },
+                    tabs: [
+                      GButton(
+                        icon: LineIcons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        icon: Icons.apps_outlined,
+                        text: 'Categories',
+                      ),
+                      GButton(
+                        icon: LineIcons.heart,
+                        text: 'Favourites',
+                      ),
+                      GButton(
+                        icon: LineIcons.user,
+                        text: 'Profile',
+                      )
+                    ]
                 ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite),
-                  label: 'Favourites',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.settings),
-                  label: 'Settings',
-                ),
-              ],
+              ),
             )
                 :null,
           );

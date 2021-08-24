@@ -7,6 +7,7 @@ import 'package:last_try/shared/constants.dart';
 import 'package:last_try/shared/default_widgets.dart';
 import 'package:last_try/shop_app/shop_cubit/shop_cubit.dart';
 import 'package:last_try/shop_app/shop_cubit/shop_state.dart';
+import 'package:line_icons/line_icons.dart';
 
 class FavouritesScreen extends StatelessWidget {
   @override
@@ -60,7 +61,7 @@ class FavouritesScreen extends StatelessWidget {
                       ),
                     ),
                 fallbackBuilder: (context) =>
-                    defaultProgressIndicator(color: indicatorColor)),
+                    defaultProgressIndicator(icon:LineIcons.heart)),
             fallbackBuilder: (context) => Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +83,7 @@ class FavouritesScreen extends StatelessWidget {
             ),
           ),
           fallbackBuilder: (context) => defaultProgressIndicator(
-            color: indicatorColor,
+            icon:LineIcons.heart,
           ),
         );
       },

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:im_stepper/stepper.dart';
 import 'package:last_try/network/local/cache_helper.dart';
 import 'package:last_try/shared/constants.dart';
 import 'package:last_try/shop_app/login/login_screen.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingScreen extends StatefulWidget {
 
@@ -80,13 +80,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             padding: const EdgeInsets.fromLTRB(10, 10, 10, 15),
             child: Row(
               children: [
-                DotStepper(
-                  dotCount: 3,
-                  dotRadius: 11,
-                  activeStep: activeStep,
-                  shape: Shape.pipe2,
-                  indicatorDecoration: IndicatorDecoration(
-                    color: Colors.black,
+                SmoothPageIndicator(
+                  controller: pageController,
+                  count:  3,
+                  axisDirection: Axis.horizontal,
+                  effect:  ExpandingDotsEffect(
+                      spacing:  5.0,
+                      //paintStyle:  PaintingStyle.stroke,
+                      //strokeWidth:  1.5,
+                      dotWidth: 20,
+                      dotColor:  Colors.grey.shade300,
+                      activeDotColor:  Colors.black87
                   ),
                 ),
                 Spacer(),

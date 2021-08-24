@@ -20,7 +20,7 @@ class CategoriesScreen extends StatelessWidget {
           conditionBuilder: (context)=>cubit.categoriesModel!=null,
           widgetBuilder: (context)=>buildCategoryItem(cubit),
           fallbackBuilder: (context)=>defaultProgressIndicator(
-              color: indicatorColor
+              icon: Icons.apps_outlined
           ),
         );
       },

@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:progress_indicators/progress_indicators.dart';
 
 Widget defaultProgressIndicator({
-  Color? color,
-  double? size,
+  IconData? icon,
 }){
   return Center(
-    child: Container(
-        width: size,height: size,
-        child: CircularProgressIndicator(
-          color: color,
-        )
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GlowingProgressIndicator(
+          child: Icon(icon,size: 35,),
+        ),
+        SizedBox(height: 6,),
+        FadingText(
+            'Loading...',
+          style: TextStyle(
+            fontSize: 20
+          ),
+        ),
+      ],
     ),
   );
 }
