@@ -142,9 +142,13 @@ class RegisterScreen extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          fallbackBuilder: (context)=>defaultProgressIndicator(
-                            color: Colors.white,
-                            size: 20,
+                          fallbackBuilder: (context)=>Center(
+                            child: Container(
+                              width: 20,height: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                         ),
                       ),

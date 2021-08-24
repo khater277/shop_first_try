@@ -95,7 +95,7 @@ class SettingsScreen extends StatelessWidget {
                         child: CircularProgressIndicator(color: Colors.white,)
                     ),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: 10,),
                   MaterialButton(
                     onPressed: (){
                       CacheHelper.removeData(key: 'token').then((value){

@@ -6,6 +6,7 @@ import 'package:flutter_conditional_rendering/conditional.dart';
 import 'package:last_try/shared/default_widgets.dart';
 import 'package:last_try/shop_app/shop_cubit/shop_cubit.dart';
 import 'package:last_try/shop_app/shop_cubit/shop_state.dart';
+import 'package:line_icons/line_icons.dart';
 
 class ProductsScreen extends StatelessWidget {
   @override
@@ -22,7 +23,7 @@ class ProductsScreen extends StatelessWidget {
             child: buildProductsPage(cubit),
           ),
           fallbackBuilder: (context)=>defaultProgressIndicator(
-            color: Colors.red.withOpacity(0.7)
+            icon: LineIcons.home,
           ),
         );
       },
@@ -48,6 +49,17 @@ class ProductsScreen extends StatelessWidget {
               ),
               buildCategoriesItems(cubit),
               SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 20, 10, 8),
+                child: Text(
+                  'New Products',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                    fontSize: 22,
+                  ),
+                ),
+              ),
               Container(
                   color: Colors.grey[200],
                   child:GridView.builder(
@@ -131,7 +143,7 @@ class ProductsScreen extends StatelessWidget {
                                           color: Colors.blue,
                                         ),
                                       ),
-                                      if (cubit.homeModel!.data!.products![index].discount==0)
+                                      if (cubit.homeModel!.data!.products![index].discount!=0)
                                         Row(
                                           children: [
                                             SizedBox(width: 5,),
